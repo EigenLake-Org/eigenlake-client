@@ -13,7 +13,7 @@ def _q(value: str) -> str:
 
 
 def _index_path(namespace: str, index: str) -> str:
-    return f"/v1/collections/{_q(namespace)}/{_q(index)}"
+    return f"/v1/indexes/{_q(namespace)}/{_q(index)}"
 
 
 @dataclass
@@ -54,7 +54,7 @@ class IndexRecords:
             "batch_size": batch_size,
             "max_workers": max_workers,
         }
-        resp = self._h._t.post(f"{self._h._path}/data/insert", json=payload).json()
+        resp = self._h._t.post(f"{self._h._path}/records/insert", json=payload).json()
         return str(resp["uuid"])
 
     @staticmethod
@@ -87,7 +87,7 @@ class IndexRecords:
             "batch_size": batch_size,
             "max_workers": max_workers,
         }
-        resp = self._h._t.post(f"{self._h._path}/data/insert-many", json=payload).json()
+        resp = self._h._t.post(f"{self._h._path}/records/insert-many", json=payload).json()
         failed = [
             FailedRecord(id=str(item.get("uuid") or ""), error=str(item.get("error") or ""))
             for item in (resp.get("failed_objects") or [])
@@ -106,7 +106,7 @@ class IndexRecords:
             "batch_size": batch_size,
             "max_workers": max_workers,
         }
-        self._h._t.post(f"{self._h._path}/data/insert-vectors", json=payload)
+        self._h._t.post(f"{self._h._path}/records/insert-vectors", json=payload)
 
     def get(self, id: str, *, return_data: bool = True, return_metadata: bool = True) -> dict[str, Any] | None:
         payload = {
@@ -114,15 +114,15 @@ class IndexRecords:
             "return_data": return_data,
             "return_metadata": return_metadata,
         }
-        resp = self._h._t.post(f"{self._h._path}/data/get-by-id", json=payload).json()
+        resp = self._h._t.post(f"{self._h._path}/records/get-by-id", json=payload).json()
         return resp.get("object")
 
     def exists(self, id: str) -> bool:
-        resp = self._h._t.get(f"{self._h._path}/data/exists/{_q(id)}").json()
+        resp = self._h._t.get(f"{self._h._path}/records/exists/{_q(id)}").json()
         return bool(resp.get("exists", False))
 
     def remove(self, id: str, *, batch_size: int = 500) -> None:
-        self._h._t.delete(f"{self._h._path}/data/{_q(id)}", params={"batch_size": batch_size})
+        self._h._t.delete(f"{self._h._path}/records/{_q(id)}", params={"batch_size": batch_size})
 
     def remove_many(
         self,
@@ -142,10 +142,10 @@ class IndexRecords:
             "batch_size": batch_size,
             "background": background,
         }
-        return self._h._t.post(f"{self._h._path}/data/delete-many", json=payload).json()
+        return self._h._t.post(f"{self._h._path}/records/delete-many", json=payload).json()
 
     def remove_job(self, job_id: int) -> Dict[str, Any]:
-        return self._h._t.get(f"{self._h._path}/data/delete-jobs/{int(job_id)}").json()
+        return self._h._t.get(f"{self._h._path}/records/delete-jobs/{int(job_id)}").json()
 
     def update(
         self,
@@ -158,7 +158,7 @@ class IndexRecords:
             "properties": properties,
             "vector": vector,
         }
-        self._h._t.patch(f"{self._h._path}/data/{_q(id)}", json=payload)
+        self._h._t.patch(f"{self._h._path}/records/{_q(id)}", json=payload)
 
     def replace(
         self,
@@ -171,7 +171,7 @@ class IndexRecords:
             "properties": properties,
             "vector": vector,
         }
-        self._h._t.put(f"{self._h._path}/data/{_q(id)}", json=payload)
+        self._h._t.put(f"{self._h._path}/records/{_q(id)}", json=payload)
 
     def list(
         self,
@@ -191,7 +191,7 @@ class IndexRecords:
             "include_properties": with_properties,
             "on_missing_keys": on_missing,
         }
-        return self._h._t.post(f"{self._h._path}/data/get-by-filter", json=payload).json()
+        return self._h._t.post(f"{self._h._path}/records/get-by-filter", json=payload).json()
 
 
 class IndexSearch:
@@ -204,11 +204,11 @@ class IndexSearch:
             "top_k": limit,
             "filter": filter,
         }
-        return self._h._t.post(f"{self._h._path}/query/near-vector", json=payload).json()
+        return self._h._t.post(f"{self._h._path}/search/near-vector", json=payload).json()
 
     def get(self, id: str, *, with_vector: bool = False) -> Dict[str, Any]:
         params = {"include_vector": bool(with_vector)}
-        return self._h._t.get(f"{self._h._path}/query/object/{_q(id)}", params=params).json()
+        return self._h._t.get(f"{self._h._path}/search/object/{_q(id)}", params=params).json()
 
     def list(
         self,
@@ -226,7 +226,7 @@ class IndexSearch:
             "include_properties": with_properties,
             "newest_first": newest_first,
         }
-        return self._h._t.get(f"{self._h._path}/query/objects", params=params).json()
+        return self._h._t.get(f"{self._h._path}/search/objects", params=params).json()
 
     def iterate(
         self,
@@ -258,7 +258,7 @@ class IndexSettings:
         self._h = handle
 
     def _read(self) -> dict[str, Any]:
-        return self._h._t.get(f"{self._h._path}/config").json()
+        return self._h._t.get(f"{self._h._path}/settings").json()
 
     def dimensions(self) -> int:
         return int(self._read().get("dims", 0))
@@ -299,7 +299,7 @@ class IndexManage:
             "batch_size": batch_size,
             "background": background,
         }
-        return self._h._t.post(f"{self._h._path}/admin/delete-by-filter", json=payload).json()
+        return self._h._t.post(f"{self._h._path}/manage/delete-by-filter", json=payload).json()
 
 
 class IndexBatch:
@@ -430,7 +430,7 @@ class IndexesNamespace:
             "shard_count": shard_count,
             "record_id_property": record_id_property,
         }
-        self._t.post("/v1/collections/get-or-create", json=payload)
+        self._t.post("/v1/indexes/get-or-create", json=payload)
         return IndexHandle(self._t, namespace, index)
 
     def open(self, *, namespace: str, index: str) -> IndexHandle:
