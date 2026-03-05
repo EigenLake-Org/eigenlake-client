@@ -10,26 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.eigenlake.dev/">
+        <link rel="canonical" href="https://docs.eigenlake.dev/guides/errors-and-retries/">
       
       
+        <link rel="prev" href="../common-workflows/">
       
-        <link rel="next" href="getting-started/">
+      
+        <link rel="next" href="../../api/client/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
-        <title>EigenLake Python Client</title>
+        <title>Errors and Retries - EigenLake Python Client</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -48,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -68,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#eigenlake-python-client" class="md-skip">
+        <a href="#errors-and-retries" class="md-skip">
           Skip to content
         </a>
       
@@ -82,7 +84,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="EigenLake Python Client" class="md-header__button md-logo" aria-label="EigenLake Python Client" data-md-component="logo">
+    <a href="../.." title="EigenLake Python Client" class="md-header__button md-logo" aria-label="EigenLake Python Client" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -102,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Errors and Retries
             
           </span>
         </div>
@@ -173,11 +175,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -196,7 +196,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="getting-started/" class="md-tabs__link">
+      <a href="../../getting-started/" class="md-tabs__link">
         
   
   
@@ -213,11 +213,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="guides/schema-builder/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../schema-builder/" class="md-tabs__link">
           
   
   
@@ -237,7 +239,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="api/client/" class="md-tabs__link">
+        <a href="../../api/client/" class="md-tabs__link">
           
   
   
@@ -271,7 +273,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="EigenLake Python Client" class="md-nav__button md-logo" aria-label="EigenLake Python Client" data-md-component="logo">
+    <a href="../.." title="EigenLake Python Client" class="md-nav__button md-logo" aria-label="EigenLake Python Client" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -286,37 +288,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -332,70 +307,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#install" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Install
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quickstart" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quickstart
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Concepts
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -407,7 +318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/" class="md-nav__link">
+      <a href="../../getting-started/" class="md-nav__link">
         
   
   
@@ -431,26 +342,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -468,7 +384,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -486,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="guides/schema-builder/" class="md-nav__link">
+      <a href="../schema-builder/" class="md-nav__link">
         
   
   
@@ -514,7 +430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="guides/common-workflows/" class="md-nav__link">
+      <a href="../common-workflows/" class="md-nav__link">
         
   
   
@@ -539,10 +455,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="guides/errors-and-retries/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Errors and Retries
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -558,6 +501,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#error-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retry-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retry Behavior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -629,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/client/" class="md-nav__link">
+      <a href="../../api/client/" class="md-nav__link">
         
   
   
@@ -684,10 +680,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install" class="md-nav__link">
+  <a href="#error-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install
+        Error Types
       
     </span>
   </a>
@@ -695,10 +691,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quickstart" class="md-nav__link">
+  <a href="#retry-behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quickstart
+        Retry Behavior
       
     </span>
   </a>
@@ -706,21 +702,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#concepts" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Concepts
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
+        Example
       
     </span>
   </a>
@@ -744,52 +729,52 @@
 
 
 
-<h1 id="eigenlake-python-client">EigenLake Python Client</h1>
-<p><code>eigenlake</code> is the Python SDK for interacting with EigenLake API servers.</p>
-<h2 id="install">Install</h2>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>eigenlake
-</code></pre></div>
-<h2 id="quickstart">Quickstart</h2>
+<h1 id="errors-and-retries">Errors and Retries</h1>
+<p>The SDK raises typed exceptions from <code>eigenlake.errors</code>.</p>
+<h2 id="error-types">Error Types</h2>
+<ul>
+<li><code>AuthenticationError</code>: invalid or missing API key.</li>
+<li><code>NotFoundError</code>: namespace/index/object does not exist.</li>
+<li><code>ConflictError</code>: duplicate conflicts.</li>
+<li><code>ValidationError</code>: invalid request payload.</li>
+<li><code>APIError</code>: non-typed API errors (including 5xx after retries).</li>
+<li><code>NetworkError</code>: request/network failures.</li>
+</ul>
+<h2 id="retry-behavior">Retry Behavior</h2>
+<p><code>eigenlake.connect(..., retries=2)</code> controls retry count.</p>
+<ul>
+<li>Network request errors are retried up to <code>retries</code>.</li>
+<li>Server <code>5xx</code> responses are retried up to <code>retries</code>.</li>
+<li>Client errors (<code>4xx</code>) are not retried.</li>
+</ul>
+<h2 id="example">Example</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">eigenlake</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">eigenlake</span><span class="w"> </span><span class="kn">import</span> <span class="n">schema</span> <span class="k">as</span> <span class="n">s</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">eigenlake.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">AuthenticationError</span><span class="p">,</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">APIError</span><span class="p">,</span> <span class="n">NetworkError</span>
 
-<span class="k">with</span> <span class="n">eigenlake</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">eigenlake</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
     <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://api.eigenlake.dev&quot;</span><span class="p">,</span>
     <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;&lt;sk_sbx_your_api_key_here&gt;&quot;</span><span class="p">,</span>
-<span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
-    <span class="n">schema</span><span class="p">,</span> <span class="n">index_options</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">s</span><span class="o">.</span><span class="n">SchemaBuilder</span><span class="p">(</span><span class="n">additional_properties</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;document_id&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filterable</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="n">filterable</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-        <span class="o">.</span><span class="n">build</span><span class="p">()</span>
-    <span class="p">)</span>
+    <span class="n">timeout</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span>
+    <span class="n">retries</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
 
-    <span class="n">idx</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">indexes</span><span class="o">.</span><span class="n">create_or_get</span><span class="p">(</span>
-        <span class="n">namespace</span><span class="o">=</span><span class="s2">&quot;demo-namespace&quot;</span><span class="p">,</span>
-        <span class="n">index</span><span class="o">=</span><span class="s2">&quot;demo-index&quot;</span><span class="p">,</span>
-        <span class="n">dimensions</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
-        <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span>
-        <span class="n">index_options</span><span class="o">=</span><span class="n">index_options</span><span class="p">,</span>
-    <span class="p">)</span>
-
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">indexes</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">namespace</span><span class="o">=</span><span class="s2">&quot;demo-namespace&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;demo-index&quot;</span><span class="p">)</span>
     <span class="n">idx</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-        <span class="n">properties</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;document_id&quot;</span><span class="p">:</span> <span class="s2">&quot;doc-1&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">},</span>
+        <span class="n">properties</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;document_id&quot;</span><span class="p">:</span> <span class="s2">&quot;doc-1&quot;</span><span class="p">},</span>
         <span class="n">vector</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">128</span><span class="p">,</span>
     <span class="p">)</span>
+<span class="k">except</span> <span class="n">AuthenticationError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;auth error:&quot;</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;validation error:&quot;</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">NetworkError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;network error:&quot;</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">APIError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;api error:&quot;</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
-<h2 id="concepts">Concepts</h2>
-<ul>
-<li><code>namespace</code>: top-level logical grouping for indexes.</li>
-<li><code>index</code>: vector index name inside a namespace.</li>
-<li><code>record</code>: one item with <code>properties</code> + <code>vector</code>.</li>
-</ul>
-<h2 id="next-steps">Next Steps</h2>
-<ul>
-<li>Start with <a href="getting-started/">Getting Started</a></li>
-<li>Learn schema design in <a href="guides/schema-builder/">Schema Builder Guide</a></li>
-<li>Explore <a href="guides/common-workflows/">Common Workflows</a></li>
-<li>Review <a href="api/client/">API Reference</a></li>
-</ul>
 
 
 
@@ -839,10 +824,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.sections", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
