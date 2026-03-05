@@ -1,6 +1,6 @@
 # eigenlake
 
-Python SDK for EigenLake Cloud.
+Python SDK for EigenLake.
 
 ## Install
 
@@ -8,48 +8,64 @@ Python SDK for EigenLake Cloud.
 pip install eigenlake
 ```
 
-## Usage
+## Quickstart
 
 ```python
-import os
 import eigenlake
 from eigenlake import schema as s
 
-# Best practice: store your credentials in environment variables
-url = os.environ["EIGENLAKE_URL"]
-api_key = os.environ["EIGENLAKE_API_KEY"]
+with eigenlake.connect(
+    url="https://api.eigenlake.dev",
+    api_key="<sk_sbx_your_api_key_here>",
+) as client:
+    schema, index_options = (
+        s.SchemaBuilder(additional_properties=False)
+        .add("document_id", s.string(required=True, filterable=True))
+        .add("text", s.string(filterable=False))
+        .add("created_at", s.datetime(filterable=True))
+        .build()
+    )
 
-client = eigenlake.connect(
-    url=url,
-    api_key=api_key,
-)
+    idx = client.indexes.create_or_get(
+        namespace="demo-namespace",
+        index="demo-index",
+        dimensions=128,
+        schema=schema,
+        index_options=index_options,
+    )
 
-print(client.ready())  # True
+    record_id = idx.records.add(
+        properties={"document_id": "doc-1", "text": "hello"},
+        vector=[0.1] * 128,
+    )
 
-schema, index_options = (
-    s.SchemaBuilder(additional_properties=False)
-    .add("document_id", s.string(required=True, filterable=True))
-    .add("document_title", s.string(filterable=True))
-    .add("chunk_number", s.integer(filterable=True))
-    .build()
-)
-
-index = client.indexes.create_or_get(
-    namespace="demo-namespace",
-    index="demo-index",
-    dimensions=128,
-    schema=schema,
-    index_options=index_options,
-)
-
-client.close()
+    result = idx.search.nearest(
+        vector=[0.1] * 128,
+        limit=3,
+    )
+    print(record_id, result)
 ```
 
-## Documentation (MkDocs)
+## Local Development
+
+```python
+import eigenlake
+
+client = eigenlake.connect_local(
+    host="http://localhost",
+    port=8000,
+    api_key="<your_api_key>",
+)
+```
+
+## Docs
+
+- Documentation source: `docs/`
+- Docs site config: `mkdocs.yml`
 
 ```bash
 pip install -e ".[docs]"
 mkdocs serve
 ```
 
-Docs will be available at `http://127.0.0.1:8000` by default.
+Docs will be available at `http://127.0.0.1:8000`.

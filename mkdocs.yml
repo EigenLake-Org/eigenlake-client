@@ -31,5 +31,9 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Guides:
+      - Schema Builder: guides/schema-builder.md
+      - Common Workflows: guides/common-workflows.md
+      - Errors and Retries: guides/errors-and-retries.md
   - API Reference:
       - Client: api/client.md
