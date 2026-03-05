@@ -2,14 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.eigenlake.dev/</loc>
-         <lastmod>2026-02-20</lastmod>
+         <lastmod>2026-03-05</lastmod>
     </url>
     <url>
          <loc>https://docs.eigenlake.dev/getting-started/</loc>
-         <lastmod>2026-02-20</lastmod>
+         <lastmod>2026-03-05</lastmod>
     </url>
     <url>
          <loc>https://docs.eigenlake.dev/api/client/</loc>
-         <lastmod>2026-02-20</lastmod>
+         <lastmod>2026-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eigenlake.dev/guides/common-workflows/</loc>
+         <lastmod>2026-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eigenlake.dev/guides/errors-and-retries/</loc>
+         <lastmod>2026-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.eigenlake.dev/guides/schema-builder/</loc>
+         <lastmod>2026-03-05</lastmod>
     </url>
 </urlset>
