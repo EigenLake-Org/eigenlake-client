@@ -1,0 +1,16 @@
+.venv/
+.venv-docs/
+__pycache__/
+*.py[cod]
+.git
+site/
+docs/
+api/
+assets/
+getting-started/
+guides/
+404.html
+index.html
+objects.inv
+sitemap.xml
+sitemap.xml.gz
